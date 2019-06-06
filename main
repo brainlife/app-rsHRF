@@ -8,7 +8,7 @@ bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
 
-time singularity exec -e docker://bids/rshrf rsHRF --input_file $bold results --atlas $mask --estimation $estimation
+time singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
 
 if [ ! -d results ]; then
 	echo "failed to create restuls directory"
