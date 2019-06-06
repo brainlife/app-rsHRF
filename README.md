@@ -26,4 +26,6 @@ The `estimation` parameter (analysis method) can be set to one of the following
 	 'FIR (Finite Impulse Response)')
 ```
 
+# TODO 
 
+we could expose more input parameters (https://github.com/BIDS-Apps/rsHRF/blob/4546c38feeb196cce5cfc60563398d32906891e6/rsHRF/CLI.py)

@@ -1,0 +1,5 @@
+{
+	"bold": "testdata/bold.nii.gz",
+	"mask": "testdata/mask.nii.gz",
+	"estimation": "canon2dd"
+}
