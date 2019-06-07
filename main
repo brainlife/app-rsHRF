@@ -11,7 +11,7 @@ estimation=$(jq -r .estimation config.json)
 time singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
 
 if [ ! -d results ]; then
-	echo "failed to create restuls directory"
+	echo "failed to create results directory"
 	exit 1
 fi
 
