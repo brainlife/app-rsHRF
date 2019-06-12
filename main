@@ -9,21 +9,9 @@ set -x
 bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
+
 time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.1 rsHRF --n_jobs 8 --input_file $bold results --atlas $mask --estimation $estimation
 
-<<<<<<< HEAD
-=======
-time singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
-
-if [ ! -d results ]; then
-	echo "failed to create results directory"
-	exit 1
-fi
-
-# create product.json
->>>>>>> b698ab16406e399c83af85c7135a6904affad03a
-cat << EOF > product.json
-{
     "brainlife": [
         { 
             "type": "image/png", 
