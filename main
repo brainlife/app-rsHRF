@@ -10,7 +10,10 @@ bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
 
-time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.1 rsHRF --n_jobs 8 --input_file $bold results --atlas $mask --estimation $estimation
+time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
+
+#1.0.1 doesn't work yet.
+#time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.1 rsHRF --n_jobs 8 --input_file $bold results --atlas $mask --estimation $estimation
 
     "brainlife": [
         { 
