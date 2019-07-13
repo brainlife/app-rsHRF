@@ -1,8 +1,11 @@
 #!/bin/bash
 
-#PBS -l nodes=1:ppn=8,vmem=30g,walltime=6:00:00
+#PBS -l nodes=1:ppn=8,vmem=60g,walltime=6:00:00
 #PBS -N rsHRF
 #PBS -V
+
+set -e
+set -x
 
 bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
