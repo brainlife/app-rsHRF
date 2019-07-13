@@ -1,19 +1,14 @@
 #!/bin/bash
-#PBS -l nodes=1:ppn=8,walltime=6:00:00
+
+#PBS -l nodes=1:ppn=8,vmem=15g,walltime=6:00:00
 #PBS -N rsHRF
+#PBS -V
 
-set -e
-set -x
-
-#parse input config.json
 bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
 
-bold_realpath=$(readlink -f $bold)
-mask_realpath=$(readlink -f $mask)
-
-time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file "$bold_realpath" results --atlas "$mask_realpath" --estimation $estimation
+time singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
 
 #1.0.1 doesn't work yet.
 #time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.1 rsHRF --n_jobs 8 --input_file $bold results --atlas $mask --estimation $estimation
