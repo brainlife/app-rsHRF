@@ -11,6 +11,8 @@ bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
 
+export SINGULARITYENV_PYTHONNOUSERSITE=true
+
 time singularity exec -e docker://bids/rshrf:1.0.8 rsHRF --input_file $bold results --atlas $mask --estimation $estimation
 
 #1.0.1 doesn't work yet.
