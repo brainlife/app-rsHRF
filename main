@@ -1,17 +1,23 @@
 #!/bin/bash
-#PBS -l nodes=1:ppn=8,vmem=250,walltime=3:00:00
+#PBS -l nodes=1:ppn=8,vmem=250g,walltime=3:00:00
 #PBS -N rsHRF
 #PBS -q LARGEMEMORY
+#PBS -V
 
 set -e
 set -x
 
-#parse input config.json
 bold=$(jq -r .bold config.json)
 mask=$(jq -r .mask config.json)
 estimation=$(jq -r .estimation config.json)
 
-time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.0 rsHRF --input_file "$bold" results --atlas "$mask" --estimation $estimation
+export SINGULARITYENV_PYTHONNOUSERSITE=true
+
+time singularity exec -e docker://bids/rshrf:1.3.9 rsHRF \
+    --input_file $bold \
+    --output_dir results \
+    --atlas $mask \
+    --estimation $estimation
 
 #1.0.1 doesn't work yet.
 #time SINGULARITYENV_PYTHONNOUSERSITE=true singularity exec -e docker://bids/rshrf:1.0.1 rsHRF --n_jobs 8 --input_file $bold results --atlas $mask --estimation $estimation
