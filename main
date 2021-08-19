@@ -13,7 +13,7 @@ estimation=$(jq -r .estimation config.json)
 
 export SINGULARITYENV_PYTHONNOUSERSITE=true
 
-time singularity exec -e docker://bids/rshrf:1.3.9 rsHRF \
+time singularity exec -e docker://bids/rshrf:1.5.7 rsHRF \
     --input_file $bold \
     --output_dir results \
     --atlas $mask \
