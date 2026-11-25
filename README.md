@@ -3,6 +3,32 @@
 
 # app-rsHRF
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Estimates the voxel-wise resting-state hemodynamic response function (HRF) and deconvolves BOLD fMRI within a brain mask with the rsHRF toolbox (BIDS-Apps rsHRF 1.0.8).**
+
+Runs rsHRF on the BOLD image with the mask passed as --atlas and the chosen estimation basis (canonical with 2 derivatives, smoothed or plain FIR, Gamma, Fourier or Hanning). rsHRF retrieves the onsets of pseudo-events from resting-state BOLD to estimate the HRF and deconvolve the signal. Results and QC plots are written to the results directory.
+
+Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.208](https://doi.org/10.25663/brainlife.app.208)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `bold` | `neuro/func/task` | yes | Resting-state BOLD fMRI time series. |
+| `mask` | `neuro/mask` | yes | brain mask (passes as --atlas) |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `results` | `raw` | rsHRF outputs: estimated HRF parameter maps, deconvolved BOLD and QC plots. |
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `estimation` | enum | `canon2dd` | estimation procedure Options: `canon2dd`, `sFIR`, `FIR`, `Gamma`, `Fourier`, `Hanning`. |
+| `tempmask` | string |  | Enter the slice number that you like to scrub (skip). Enter string like "1,2,4,56,555" |
+
+Runtime: container `bids/rshrf:1.0.8`; 8 CPUs; 6 h walltime.
+
+<!-- brainlife-app:end -->
+
 This is a brainlife wrapper for the resting state HRF estimation and deconvolution method. 
 https://github.com/BIDS-Apps/rsHRF 
 
