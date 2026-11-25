@@ -14,7 +14,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -24,27 +24,27 @@ Runs rsHRF on the BOLD image with the mask passed as --atlas and the chosen esti
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/func/task` · `neuro/mask` |
-| 📤 **Outputs** | `raw` |
-| 🐳 **Container** | `bids/rshrf:1.0.8` |
-| ⚙️ **Resources** | 8 CPUs · 6 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.208](https://doi.org/10.25663/brainlife.app.208) |
+| **Inputs** | `neuro/func/task` · `neuro/mask` |
+| **Outputs** | `raw` |
+| **Container** | `bids/rshrf:1.0.8` |
+| **Resources** | 8 CPUs · 6 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.208](https://doi.org/10.25663/brainlife.app.208) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `bold` | `neuro/func/task` | yes | Resting-state BOLD fMRI time series. |
 | `mask` | `neuro/mask` | yes | brain mask (passes as --atlas) |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
 | `results` | `raw` | rsHRF outputs: estimated HRF parameter maps, deconvolved BOLD and QC plots. |
 
 <details>
-<summary><b>⚙️ Parameters</b> (2)</summary>
+<summary><b>Parameters</b> (2)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -55,9 +55,9 @@ Runs rsHRF on the BOLD image with the mask passed as --atlas and the chosen esti
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.208](https://doi.org/10.25663/brainlife.app.208), choose a BOLD time series and a brain mask (`neuro/mask`, passed to rsHRF as `--atlas`), pick the `estimation` method and press **Execute**. The results are archived as a `raw` dataset tagged `rsHRF`.
 
@@ -79,7 +79,7 @@ rsHRF retrieves the onsets of pseudo-events that trigger a hemodynamic response 
 
 The input BOLD should already be preprocessed; in particular it should be band-pass filtered (about 0.01–0.08 Hz) and z-scored per voxel. To be on the safe side, rsHRF repeats these steps. See the [rsHRF BIDS-App documentation](http://bids-apps.neuroimaging.io/rsHRF/) and the [MATLAB version](https://github.com/compneuro-da/rsHRF) for more.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/). The App runs the `bids/rshrf:1.0.8` container and can need a large amount of memory.
 
@@ -100,14 +100,14 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
    ./main
    ```
 
-## 📦 Outputs
+## Outputs
 
 ```text
 results/        rsHRF outputs: HRF parameter maps, deconvolved BOLD and QC plots
 product.json    the QC plots bold_plot_1.png and bold_plot_2.png, shown on brainlife.io
 ```
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -119,7 +119,7 @@ product.json    the QC plots bold_plot_1.png and bold_plot_2.png, shown on brain
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Soichi Hayashi (brainlife.io App)
 - Franco Pestilli (project director)
@@ -128,7 +128,7 @@ product.json    the QC plots bold_plot_1.png and bold_plot_2.png, shown on brain
 
 **rsHRF toolbox:** Guorong Wu, Nigel Colenbier, Sofie Van Den Bossche and Daniele Marinazzo; Madhur Tandon and Asier Erramuzpe (Python and BIDS-App).
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -147,6 +147,6 @@ product.json    the QC plots bold_plot_1.png and bold_plot_2.png, shown on brain
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). rsHRF itself is distributed under its own license.
